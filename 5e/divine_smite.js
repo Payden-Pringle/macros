@@ -63,12 +63,10 @@ if (hasAvailableSlot(s_actor)) {
                     <select name="slot-level">` + optionsText + `</select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label class="checkbox">
                 <input type="checkbox" name="consumeCheckbox" checked/>` + game.i18n.localize("DND5E.SpellCastConsume") + `</label>
             </div>
-
             <div class="form-group">
                 <label class="checkbox">
                 <input type="checkbox" name="criticalCheckbox"/>` + game.i18n.localize("DND5E.CriticalHit") + "?" + `</label>
@@ -160,7 +158,7 @@ function smite(actor, slotLevel, criticalHit, consume, isPact) {
 
     targets.forEach(target => {
         let numDice = slotLevel + 1;
-        let type = target.actor.data.data.details.type.value?.toLocaleLowerCase();
+        let type = target.actor.data.data.details.type?.value?.toLocaleLowerCase();
         if (affectedCreatureTypes.includes(type)) numDice += 1;
         if (criticalHit) numDice *= 2;
         const flavor = `Macro Divine Smite - ${game.i18n.localize("DND5E.DamageRoll")} (${game.i18n.localize("DND5E.DamageRadiant")})`;
@@ -170,14 +168,14 @@ function smite(actor, slotLevel, criticalHit, consume, isPact) {
         
         if (targetActor.permission !== CONST.ENTITY_PERMISSIONS.OWNER) {
             // We need help applying the damage, so make a roll message for right-click convenience.
-            damageRoll.roll().toMessage({
+            damageRoll.toMessage({
                 speaker: ChatMessage.getSpeaker(),
                 flavor: `${actor.name} smited ${targetActor.data.name}.<br>${flavor}
                 <p><em>Manually apply (or right-click) ${damageRoll.result} HP of damage to ${targetActor.data.name}</em></p>` });
         }
         else {
             // We can apply damage automatically, so just show a normal chat message.
-            damageRoll.roll().toMessage({
+            damageRoll.toMessage({
                 speaker: ChatMessage.getSpeaker(),
                 flavor: `${actor.name} smited ${targetActor.data.name}.<br>${flavor}
                 <p><em>${targetActor.data.name} has taken ${damageRoll.result} HP of damage.</em></p>` });
