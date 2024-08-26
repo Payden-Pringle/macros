@@ -1,4 +1,4 @@
-{
+[{
     "@odata.context": "https://testsite.test",
     "value": [
         {
@@ -24,4 +24,4 @@
             ]
         }
     ]
-}
+}]
