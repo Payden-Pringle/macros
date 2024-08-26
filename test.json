@@ -1,0 +1,27 @@
+{
+    "@odata.context": "https://testsite.test",
+    "value": [
+        {
+            "id": "uuid-1",
+            "displayName": "HR",
+            "owners": [
+                {
+                    "@odata.type": "#microsoft.graph.user",
+                    "id": "uuid-3",
+                    "displayName": "John Doe"
+                }
+            ]
+        },
+        {
+            "id": "uuid-2",
+            "displayName": "Accounting",
+            "owners": [
+                {
+                    "@odata.type": "#microsoft.graph.user",
+                    "id": "uuid-4",
+                    "displayName": "Bob Wilcox"
+                }
+            ]
+        }
+    ]
+}
