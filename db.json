@@ -1,5 +1,4 @@
-[{
-    "@odata.context": "https://testsite.test",
+{
     "value": [
         {
             "id": "uuid-1",
@@ -24,4 +23,4 @@
             ]
         }
     ]
-}]
+}
